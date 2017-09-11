@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		D48E60E11F630C2300F7581F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48E60E01F630C2300F7581F /* AppDelegate.swift */; };
-		D48E60E31F630C2300F7581F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48E60E21F630C2300F7581F /* ViewController.swift */; };
+		D48E60E31F630C2300F7581F /* CBPeriferalManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48E60E21F630C2300F7581F /* CBPeriferalManagerViewController.swift */; };
 		D48E60E61F630C2300F7581F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D48E60E41F630C2300F7581F /* Main.storyboard */; };
 		D48E60E81F630C2300F7581F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D48E60E71F630C2300F7581F /* Assets.xcassets */; };
 		D48E60EB1F630C2300F7581F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D48E60E91F630C2300F7581F /* LaunchScreen.storyboard */; };
+		D4A3498A1F6447DB00F1F6B2 /* CBCentralManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A349891F6447DB00F1F6B2 /* CBCentralManagerViewController.swift */; };
+		D4A3498C1F64533500F1F6B2 /* KnownDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A3498B1F64533500F1F6B2 /* KnownDevices.swift */; };
+		D4A3498E1F645CDE00F1F6B2 /* PeripheralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A3498D1F645CDE00F1F6B2 /* PeripheralViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D48E60DD1F630C2300F7581F /* bluetooth-le-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bluetooth-le-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D48E60E01F630C2300F7581F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D48E60E21F630C2300F7581F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D48E60E21F630C2300F7581F /* CBPeriferalManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBPeriferalManagerViewController.swift; sourceTree = "<group>"; };
 		D48E60E51F630C2300F7581F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D48E60E71F630C2300F7581F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D48E60EA1F630C2300F7581F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D48E60EC1F630C2300F7581F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4A349891F6447DB00F1F6B2 /* CBCentralManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBCentralManagerViewController.swift; sourceTree = "<group>"; };
+		D4A3498B1F64533500F1F6B2 /* KnownDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnownDevices.swift; sourceTree = "<group>"; };
+		D4A3498D1F645CDE00F1F6B2 /* PeripheralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +61,14 @@
 			isa = PBXGroup;
 			children = (
 				D48E60E01F630C2300F7581F /* AppDelegate.swift */,
-				D48E60E21F630C2300F7581F /* ViewController.swift */,
+				D48E60E21F630C2300F7581F /* CBPeriferalManagerViewController.swift */,
+				D4A349891F6447DB00F1F6B2 /* CBCentralManagerViewController.swift */,
 				D48E60E41F630C2300F7581F /* Main.storyboard */,
 				D48E60E71F630C2300F7581F /* Assets.xcassets */,
 				D48E60E91F630C2300F7581F /* LaunchScreen.storyboard */,
 				D48E60EC1F630C2300F7581F /* Info.plist */,
+				D4A3498B1F64533500F1F6B2 /* KnownDevices.swift */,
+				D4A3498D1F645CDE00F1F6B2 /* PeripheralViewController.swift */,
 			);
 			path = "bluetooth-le-test";
 			sourceTree = "<group>";
@@ -135,7 +144,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D48E60E31F630C2300F7581F /* ViewController.swift in Sources */,
+				D4A3498E1F645CDE00F1F6B2 /* PeripheralViewController.swift in Sources */,
+				D4A3498A1F6447DB00F1F6B2 /* CBCentralManagerViewController.swift in Sources */,
+				D4A3498C1F64533500F1F6B2 /* KnownDevices.swift in Sources */,
+				D48E60E31F630C2300F7581F /* CBPeriferalManagerViewController.swift in Sources */,
 				D48E60E11F630C2300F7581F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
