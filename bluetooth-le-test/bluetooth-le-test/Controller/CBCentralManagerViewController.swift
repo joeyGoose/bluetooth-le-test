@@ -9,26 +9,28 @@
 import UIKit
 import CoreBluetooth
 
-class CBCentralManagerViewController: UIViewController, CBCentralManagerDelegate {
-
-    @IBOutlet weak var deviceButton: UIButton!
+class CBCentralManagerViewController: UIViewController, CBCentralManagerDelegate, UITableViewDelegate, UITableViewDataSource {
     
-    var centralManager : CBCentralManager!
+    var centralManager: CBCentralManager!
     
-    var peripheralConnected : CBPeripheral?
+    var peripheralConnected: CBPeripheral?
+    
+    var foundPeripherals = [CBPeripheral]()
+    
+    @IBOutlet weak var peripheralTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        peripheralTable.delegate = self
+        peripheralTable.dataSource = self
         
         centralManager = CBCentralManager(delegate: self, queue: nil)
     }
     
     // MARK: - Central Manager Delegate
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        //do something
-        
+
         switch central.state {
             
         case .unknown:
@@ -49,18 +51,7 @@ class CBCentralManagerViewController: UIViewController, CBCentralManagerDelegate
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        
-        if peripheral.name == "SensorTag 2.0" && peripheral.name != nil {
-            print("Peripheral Discovered: \(peripheral.name!)")
-            centralManager.stopScan()
-            deviceButton.isHidden = false
-            deviceButton.titleLabel?.text = peripheral.name!
-            deviceButton.isEnabled = true
-            
-            //connect to the periphal
-            centralManager.connect(peripheral, options: nil)
-            peripheralConnected = peripheral
-        }
+        addToFoundPeripherals(peripheral: peripheral)
     }
     
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
@@ -76,7 +67,36 @@ class CBCentralManagerViewController: UIViewController, CBCentralManagerDelegate
         print("Peripheral has been disconnected.")
     }
     
-    // Storyboard
+    private func addToFoundPeripherals(peripheral: CBPeripheral) {
+        
+        if let _ = peripheral.name as String! {
+            if !foundPeripherals.contains(peripheral) {
+            foundPeripherals.append(peripheral)
+              let indexPath = IndexPath(row: foundPeripherals.count - 1, section: 0)
+              peripheralTable.insertRows(at: [indexPath], with: .right)
+            }
+        }
+        
+    }
+    
+    // MARK: Table View
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return foundPeripherals.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "PeripheralCell") as? PeripheralCell {
+            let peripheral = foundPeripherals[indexPath.row]
+            cell.updateViews(peripheralName: peripheral.name!)
+            return cell
+        } else {
+            return PeripheralCell()
+        }
+    }
+    
+
+    
+    // MARK: Storyboard
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let peripheralViewController = segue.destination as? PeripheralViewController {
             peripheralViewController.peripheral = peripheralConnected
