@@ -61,6 +61,7 @@ class CBCentralManagerViewController: UIViewController, CBCentralManagerDelegate
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("Successfully connected to \(peripheral.name!)")
         peripheralConnected = peripheral
+        performSegue(withIdentifier: "PeripheralView", sender: nil)
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
@@ -92,6 +93,11 @@ class CBCentralManagerViewController: UIViewController, CBCentralManagerDelegate
         } else {
             return PeripheralCell()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let peripheral = foundPeripherals[indexPath.row]
+        centralManager.connect(peripheral, options: nil)
     }
     
 
